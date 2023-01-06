@@ -1,5 +1,8 @@
 package com.cpinot.constructora.controller;
 
+import com.cpinot.constructora.entities.ProjectEntity;
+import com.cpinot.constructora.service.ProjectService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -11,27 +14,32 @@ import java.net.URI;
 @RequestMapping("/project")
 public class ProjectController {
 
+   @Autowired
+   private ProjectService projectService;
+
     /**
      * Lista todos los proyectos desde la BD
      * @return
      */
     @GetMapping
     public ResponseEntity<?> getAll(){
-        return ResponseEntity.ok().body("listado de proyectos");
+        return ResponseEntity.ok().body(projectService.getAll());
     }
 
     @PostMapping
-    public ResponseEntity<?> create() {
+    public ResponseEntity<?> create(@RequestBody ProjectEntity project) {
+        ProjectEntity result = projectService.create(project);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping
-    public ResponseEntity<?> update() {
-        return ResponseEntity.ok().body("Se actualizo el proyecto");
+    public ResponseEntity<?> update(@RequestBody ProjectEntity project) {
+        return ResponseEntity.ok().body(projectService.update(project));
     }
 
     @DeleteMapping
-    public ResponseEntity<?> delete() {
-        return ResponseEntity.ok().body("Se elimino el proyecto");
+    public ResponseEntity<?> delete(@RequestBody ProjectEntity project) {
+        projectService.delete(project);
+        return ResponseEntity.ok().build();
     }
 }

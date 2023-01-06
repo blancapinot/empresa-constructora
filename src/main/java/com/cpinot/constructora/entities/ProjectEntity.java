@@ -18,6 +18,6 @@ import javax.persistence.Table;
 public class ProjectEntity {
     @Id
     private String id;
-    private String nombreProject;
+    private String nameProject;
     private String ubicacion;
 }

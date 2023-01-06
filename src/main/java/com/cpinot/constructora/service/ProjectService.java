@@ -10,9 +10,20 @@ import java.util.List;
 @Service
 public class ProjectService {
     @Autowired
+    static
     IProjectRepository projectRepository;
-    public List<ProjectEntity> getAll(){
+    public static List<ProjectEntity> getAll(){
         return projectRepository.findAll();
-
     }
+    public ProjectEntity create(ProjectEntity project){
+        return projectRepository.save(project);
+    }
+    public static ProjectEntity update(ProjectEntity project){
+        return projectRepository.save(project);
+    }
+
+    public void delete(ProjectEntity project){
+        projectRepository.deleteById(project.getId());
+    }
+
 }
