@@ -22,4 +22,5 @@ public class ClientEntity {
     private String rut;
     private String nameProjectClient;
     private Integer completionPercent;
+    private String linkImagen;
 }
