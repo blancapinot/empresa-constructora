@@ -17,14 +17,16 @@ public class ProveedorService {
         }
 
         public ProveedorEntity create(ProveedorEntity proveedor){
+
             return proveedorRepository.save(proveedor);
         }
 
         public ProveedorEntity update(ProveedorEntity proveedor){
+
             return proveedorRepository.save(proveedor);
         }
 
         public void delete(ProveedorEntity proveedor){
-             proveedorRepository.deleteById(proveedor.getRut());
+                 proveedorRepository.deleteById(proveedor.getRut());
         }
 }

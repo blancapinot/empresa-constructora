@@ -24,7 +24,8 @@ private ProveedorService proveedorService;
     }
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody ProveedorEntity proveedor){
+    public ResponseEntity<ProveedorEntity> create(
+            @RequestBody ProveedorEntity proveedor){
         ProveedorEntity result = proveedorService.create(proveedor);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
